@@ -1,0 +1,30 @@
+- name: My Server
+  hosts: linux
+  become: yes
+
+  vars:
+    package_name: nginx
+    user_name: devops_user  
+
+  tasks:
+    - name: Install packages
+      apt:
+        name: "{{ item }}"
+        state: present
+      become: yes
+      loop: 
+        - nginx
+        - apache2
+        - git
+
+    - name: Create  user {{ user_name }}
+      user: 
+        name: "{{ user_name }}"
+        state: present
+
+
+    - name: start  "{{ package_name }}"
+      service: 
+        name:  "{{ package_name }}"
+        state: started
+
