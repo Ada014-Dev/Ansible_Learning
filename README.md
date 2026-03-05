@@ -48,7 +48,7 @@ ansible-playbook -i inventory deploy.yml --ask-become-pass
 
 ### Frontend
 ![Frontend](screenshots/frontend.png)## Screenshots
-[Add screenshots here]
+
 
 ## Author
 Ada014-Dev
