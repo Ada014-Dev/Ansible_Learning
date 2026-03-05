@@ -1,0 +1,22 @@
+  - name: Deploy Ecommerce App
+    hosts: linux
+    become: yes
+
+    tasks:
+    - name: Install Docker
+      apt: 
+        name: docker.io
+        state: present
+    - name: Install Docker Compose 
+      apt: 
+        name: docker-compose 
+        state: present
+    - name: Clone the repo
+      git: 
+        repo: "https://github.com/Ada014-Dev/E-commerce-application-with-Obersvability-Prometheus-OpenTelemetry-Jaegar-Grafana-.git"
+        dest: /home/ubuntu/app
+    - name: Start the app
+      command: docker-compose up -d
+      args: 
+        chdir: /home/ubuntu/app 
+
